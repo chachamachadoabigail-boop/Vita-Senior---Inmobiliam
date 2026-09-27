@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 interface SmartProjectImageProps {
-  imageKey: 'render' | 'villa';
+  imageKey: 'render' | 'villa' | 'smartwatch' | string;
   title: string;
   subtitle: string;
   className?: string;
@@ -31,17 +31,30 @@ export const SmartProjectImage: React.FC<SmartProjectImageProps> = ({
   overlayContent
 }) => {
   const [detectedSrc, setDetectedSrc] = useState<string | null>(null);
-  const [localPreviewSrc, setLocalPreviewSrc] = useState<string | null>(null);
+  const [localPreviewSrc, setLocalPreviewSrc] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem(`vita_img_${imageKey}`) || null;
+    } catch {
+      return null;
+    }
+  });
   const [isChecking, setIsChecking] = useState<boolean>(true);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Candidate file paths that the user might have saved
   const candidateExtensions = ['jpg', 'png', 'webp', 'jpeg', 'JPG', 'PNG', 'WEBP', 'JPEG'];
-  const candidateUrls = [
-    ...candidateExtensions.map(ext => `/images/${imageKey}.${ext}`),
-    ...candidateExtensions.map(ext => `/${imageKey}.${ext}`),
-  ];
+  const keys = imageKey === 'smartwatch' 
+    ? ['smartwatch', 'reloj', 'regalo', 'smart_watch', 'smartwatch_reloj']
+    : [imageKey];
+
+  const candidateUrls: string[] = [];
+  keys.forEach(k => {
+    candidateExtensions.forEach(ext => {
+      candidateUrls.push(`/images/${k}.${ext}`);
+      candidateUrls.push(`/${k}.${ext}`);
+    });
+  });
 
   const checkCandidates = async () => {
     setIsChecking(true);
@@ -65,21 +78,36 @@ export const SmartProjectImage: React.FC<SmartProjectImageProps> = ({
     setDetectedSrc(foundSrc);
     setIsChecking(false);
     if (onImageFound) {
-      onImageFound(!!foundSrc);
+      onImageFound(!!foundSrc || !!localPreviewSrc);
     }
   };
 
   useEffect(() => {
+    try {
+      const saved = localStorage.getItem(`vita_img_${imageKey}`);
+      if (saved) setLocalPreviewSrc(saved);
+    } catch {
+      // ignore
+    }
     checkCandidates();
   }, [imageKey]);
 
-  // Handle manual file selection for immediate browser testing
+  // Handle manual file selection for immediate browser testing & persistence
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setLocalPreviewSrc(previewUrl);
-      if (onImageFound) onImageFound(true);
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const dataUrl = event.target?.result as string;
+        setLocalPreviewSrc(dataUrl);
+        try {
+          localStorage.setItem(`vita_img_${imageKey}`, dataUrl);
+        } catch {
+          // ignore
+        }
+        if (onImageFound) onImageFound(true);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -159,16 +187,24 @@ export const SmartProjectImage: React.FC<SmartProjectImageProps> = ({
         </div>
       ) : (
         /* Empty / Not yet placed state */
-        <div className={`w-full ${aspectRatio} min-h-[340px] flex flex-col items-center justify-center p-6 sm:p-8 text-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-950 border-2 border-dashed border-amber-500/50`}>
-          <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center mb-4 text-amber-400 shadow-inner">
-            <ImageIcon className="w-8 h-8" />
+        <div className={`w-full ${aspectRatio} min-h-[280px] sm:min-h-[320px] flex flex-col items-center justify-center p-6 sm:p-8 text-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-950 border-2 border-dashed border-amber-500/50`}>
+          <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-center justify-center mb-3 text-amber-400 shadow-inner">
+            <ImageIcon className="w-7 h-7" />
           </div>
 
-          <h3 className="text-lg font-bold text-white font-display mb-1">
-            Espacio Listo para: <span className="text-amber-300 font-mono">{imageKey}.jpg</span> o <span className="text-amber-300 font-mono">{imageKey}.png</span>
+          <h3 className="text-base sm:text-lg font-bold text-white font-display mb-1">
+            {imageKey === 'smartwatch' ? (
+              <span>Cargar Imagen del <span className="text-amber-300">Reloj Smartwatch</span></span>
+            ) : (
+              <span>Espacio Listo para: <span className="text-amber-300 font-mono">{imageKey}.jpg</span></span>
+            )}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-lg mb-6 leading-relaxed">
-            Hemos creado la carpeta <code className="bg-slate-950 px-2 py-0.5 rounded text-amber-300 font-mono border border-slate-700">/public/images/</code> en tu proyecto. Guarda tu imagen allí con el nombre <span className="text-emerald-400 font-bold font-mono">{imageKey}.jpg</span>, <span className="text-emerald-400 font-bold font-mono">{imageKey}.png</span> o <span className="text-emerald-400 font-bold font-mono">{imageKey}.webp</span>.
+          <p className="text-xs text-slate-300 max-w-md mb-5 leading-relaxed">
+            {imageKey === 'smartwatch' ? (
+              <span>Puedes subir la foto directamente desde tu computador con el botón de abajo o guardarla en <code className="bg-slate-950 px-1.5 py-0.5 rounded text-amber-300 font-mono border border-slate-700">/public/images/smartwatch.jpg</code>.</span>
+            ) : (
+              <span>Hemos creado la carpeta <code className="bg-slate-950 px-1.5 py-0.5 rounded text-amber-300 font-mono border border-slate-700">/public/images/</code>. Guarda tu imagen como <span className="text-emerald-400 font-bold font-mono">{imageKey}.jpg</span> o <span className="text-emerald-400 font-bold font-mono">{imageKey}.png</span>.</span>
+            )}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -177,7 +213,7 @@ export const SmartProjectImage: React.FC<SmartProjectImageProps> = ({
               className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition-transform hover:scale-105 cursor-pointer"
             >
               <Upload className="w-4 h-4" />
-              <span>Cargar o Probar Imagen Ahora</span>
+              <span>{imageKey === 'smartwatch' ? 'Subir Foto del Smartwatch' : 'Cargar o Probar Imagen Ahora'}</span>
             </button>
 
             <button

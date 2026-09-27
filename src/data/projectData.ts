@@ -89,18 +89,18 @@ export const PROJECT_DETAILS = {
       },
       {
         id: 'cost-4',
-        concept: 'Terreno en Tisaleo ($55.000 / 8)',
-        amount: 6875,
-        percentage: 17.2,
-        description: 'Cuota proporcional del terreno matriz de 2.800 m² de alto valor paisajístico en Santa Lucía / La Libertad ($55.000 total).',
+        concept: 'Terreno en Tisaleo ($47.000 / 8)',
+        amount: 5875,
+        percentage: 14.7,
+        description: 'Cuota proporcional del terreno matriz de 2.800 m² de alto valor paisajístico en Santa Lucía / La Libertad ($47.000 total: $5.875 por villa).',
         category: 'land'
       },
       {
         id: 'cost-5',
-        concept: 'Permisos GAD, Trámites e Indirectos',
-        amount: 125,
-        percentage: 0.3,
-        description: 'Aprobación de planos arquitectónicos en el GAD Tisaleo, estudios de suelo, licencias ambientales, legalización y contingencias.',
+        concept: 'Permisos GAD, Trámites e Imprevistos',
+        amount: 1125,
+        percentage: 2.8,
+        description: 'Aprobación de planos arquitectónicos en el GAD Tisaleo, estudios de suelo, licencias ambientales, legalización, trámites e imprevistos ($1.125 por villa).',
         category: 'permits'
       },
       {

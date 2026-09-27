@@ -676,8 +676,8 @@ export const PitchDeckView: React.FC<PitchDeckViewProps> = ({
 
                     <div className="p-3.5 bg-[#f8fbf9] rounded-2xl border border-[#dce8e0]">
                       <span className="text-[#597b65] block font-bold text-[11px]">Terreno 2.800 m² (Tisaleo)</span>
-                      <span className="text-xl font-black font-mono text-[#7d562b] block mt-0.5">$55.000</span>
-                      <span className="text-[10px] text-[#4f705b] block mt-0.5">Sector Santa Lucía / La Libertad</span>
+                      <span className="text-xl font-black font-mono text-[#7d562b] block mt-0.5">$47.000</span>
+                      <span className="text-[10px] text-[#4f705b] block mt-0.5">$5.875 por villa • Santa Lucía</span>
                     </div>
                   </div>
 

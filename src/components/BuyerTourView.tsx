@@ -15,12 +15,17 @@ import {
   DollarSign,
   Coffee,
   PhoneCall,
-  FileText
+  FileText,
+  Watch,
+  Gift,
+  BellRing,
+  Activity
 } from 'lucide-react';
 import { PROJECT_DETAILS } from '../data/projectData';
 import { CostComparatorTool } from './CostComparatorTool';
 import { ConjuntoRenderHero } from './ConjuntoRenderHero';
 import { VillaFloorPlanBlueprint } from './VillaFloorPlanBlueprint';
+import { SmartProjectImage } from './SmartProjectImage';
 
 interface BuyerTourViewProps {
   onOpenEmergencyModal: () => void;
@@ -49,6 +54,10 @@ export const BuyerTourView: React.FC<BuyerTourViewProps> = ({
     {
       q: '¿Por qué las villas son de una sola planta sin gradas?',
       a: 'Porque las gradas representan el 85% de los accidentes graves en adultos mayores. En Vita Senior todo el conjunto, la villa, el baño gerontológico y los jardines están diseñados en una sola planta con puertas de 0.90 m y pisos antideslizantes.'
+    },
+    {
+      q: '¿Qué regalo especial de salud recibo por la compra de la villa?',
+      a: 'Por la compra de cada villa recibes GRATIS un reloj smartwatch inteligente que controla y registra tus signos vitales (ritmo cardíaco, presión arterial y oxigenación SpO2) las 24 horas. En caso de detectarse cualquier anomalía o alarma de salud, el reloj notifica de forma inmediata y automática al centro médico particular en convenio y a la enfermería in situ para acudir en tu auxilio.'
     }
   ];
 
@@ -99,7 +108,14 @@ export const BuyerTourView: React.FC<BuyerTourViewProps> = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-amber-100 text-amber-900 border border-amber-300/80 font-bold text-xs shadow-2xs">
+              <Gift className="w-4 h-4 text-amber-700" />
+              <span>¡Regalo por tu compra! Reloj Smartwatch de control vital gratis</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4 pt-1">
             <button
               onClick={onOpenDossierModal}
               className="px-6 py-3.5 rounded-xl bg-[#2d5a3c] hover:bg-[#234830] text-white font-bold text-sm shadow-xs transition-all cursor-pointer flex items-center gap-2"
@@ -116,6 +132,70 @@ export const BuyerTourView: React.FC<BuyerTourViewProps> = ({
             </button>
           </div>
 
+        </div>
+      </div>
+
+      {/* BENEFICIO ESPECIAL POR COMPRA: RELOJ SMARTWATCH DE MONITOREO VITAL */}
+      <div className="bg-gradient-to-br from-[#13301d] via-[#1a4027] to-[#235334] text-white rounded-3xl p-6 sm:p-10 border-2 border-emerald-400/40 shadow-xl relative overflow-hidden">
+        <div className="absolute -right-10 -bottom-10 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-4 right-4 p-4 opacity-10 pointer-events-none hidden md:block">
+          <Watch className="w-52 h-52 text-white" />
+        </div>
+
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="space-y-4 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold border border-amber-400/30">
+              <Gift className="w-4 h-4 text-amber-400 animate-bounce" />
+              <span>Beneficio Exclusivo por la Compra de tu Villa</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-4xl font-extrabold font-display text-white tracking-tight leading-snug">
+              Reloj Smartwatch de Control Vital <span className="text-amber-300">GRATIS</span>
+            </h3>
+
+            <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed font-medium">
+              Por la compra de la villa, cada propietario recibe <strong>totalmente gratis un reloj smartwatch inteligente</strong> que controla de forma permanente sus signos vitales. En caso de una alarma o anomalía crítica, <strong>se notifica de inmediato al centro médico particular</strong> y al equipo de enfermería del conjunto para una atención médica oportuna.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+              <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                <Activity className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <span><strong>Monitoreo Continuo:</strong> Pulso, presión arterial y SpO2</span>
+              </div>
+              <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                <BellRing className="w-4 h-4 text-amber-300 flex-shrink-0" />
+                <span><strong>Alarma Inmediata:</strong> Alerta automática al centro médico particular</span>
+              </div>
+              <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/15">
+                <Watch className="w-4 h-4 text-cyan-300 flex-shrink-0" />
+                <span><strong>Tranquilidad Total:</strong> Cómodo, ergonómico y siempre conectado</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Espacio interactivo para la imagen del Reloj Smartwatch */}
+          <div className="w-full lg:w-[330px] flex-shrink-0 flex flex-col space-y-2.5">
+            <SmartProjectImage
+              imageKey="smartwatch"
+              title="Smartwatch de Control Vital"
+              subtitle="Regalo por la Compra de la Villa"
+              aspectRatio="aspect-[4/3]"
+              className="border-2 border-emerald-400/50 shadow-2xl"
+            />
+            
+            <div className="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20 text-center">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-extrabold text-amber-300 flex items-center gap-1.5">
+                  <Gift className="w-4 h-4 text-amber-400" />
+                  <span>100% GRATIS</span>
+                </span>
+                <span className="text-[11px] text-emerald-200 font-semibold flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Alerta a centro médico</span>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

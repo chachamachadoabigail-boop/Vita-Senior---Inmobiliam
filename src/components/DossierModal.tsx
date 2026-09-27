@@ -227,16 +227,16 @@ export const DossierModal: React.FC<DossierModalProps> = ({
                     <td className="p-2.5 text-right font-mono">$27.200</td>
                   </tr>
                   <tr>
-                    <td className="p-2.5">Terreno Tisaleo ($55.000 prorrateado en 8 unidades)</td>
-                    <td className="p-2.5 text-right font-mono">$6.875</td>
-                    <td className="p-2.5 text-right">17.2%</td>
-                    <td className="p-2.5 text-right font-mono">$55.000</td>
+                    <td className="p-2.5">Terreno Tisaleo ($47.000 prorrateado en 8 unidades)</td>
+                    <td className="p-2.5 text-right font-mono">$5.875</td>
+                    <td className="p-2.5 text-right">14.7%</td>
+                    <td className="p-2.5 text-right font-mono">$47.000</td>
                   </tr>
                   <tr>
                     <td className="p-2.5">Permisos GAD, trámites e imprevistos</td>
-                    <td className="p-2.5 text-right font-mono">$125</td>
-                    <td className="p-2.5 text-right">0.3%</td>
-                    <td className="p-2.5 text-right font-mono">$1.000</td>
+                    <td className="p-2.5 text-right font-mono">$1.125</td>
+                    <td className="p-2.5 text-right">2.8%</td>
+                    <td className="p-2.5 text-right font-mono">$9.000</td>
                   </tr>
                   <tr className="bg-emerald-50 font-bold text-emerald-950">
                     <td className="p-2.5">Utilidad Neta Desarrollador (Inmobi Liam - 25%)</td>
