@@ -492,7 +492,7 @@ export const CostComparatorTool: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#2d6f42] flex-shrink-0 mt-0.5" />
-                  <span><strong>Seguridad perimetral y garita</strong> con guardia 24 horas.</span>
+                  <span><strong>Seguridad perimetral</strong> con monitoreo 24 horas.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#2d6f42] flex-shrink-0 mt-0.5" />

@@ -45,7 +45,7 @@ export const BuyerTourView: React.FC<BuyerTourViewProps> = ({
     },
     {
       q: '¿Qué incluye exactamente la alícuota de $200 al mes?',
-      a: 'Incluye la enfermera en el conjunto, el sistema de domótica con sensores de caída y respuesta en menos de 10 minutos, la seguridad en garita, el mantenimiento integral de los 2.240 m² de lagos y jardines, y el uso irrestricto del Club Social.'
+      a: 'Incluye la enfermera en el conjunto, el sistema de domótica con sensores de caída y respuesta en menos de 10 minutos, la seguridad perimetral con monitoreo 24 horas, el mantenimiento integral de los 2.240 m² de lagos y jardines, y el uso irrestricto del Club Social.'
     },
     {
       q: '¿Cómo funciona la asistencia médica ante una caída?',

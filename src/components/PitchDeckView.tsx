@@ -42,8 +42,8 @@ export const PitchDeckView: React.FC<PitchDeckViewProps> = ({
     { id: 0, title: 'Triple Impacto' },
     { id: 1, title: 'Modelo del Conjunto' },
     { id: 2, title: 'Prototipo de Villa' },
-    { id: 3, title: 'Normativa GAD' },
-    { id: 4, title: 'Retorno Financiero' },
+    { id: 3, title: 'Retorno Financiero' },
+    { id: 4, title: 'Normativa GAD' },
   ];
 
   const paginate = (newDirection: number) => {
@@ -463,15 +463,15 @@ export const PitchDeckView: React.FC<PitchDeckViewProps> = ({
                     onClick={() => paginate(1)}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#2d5a3c] text-white font-bold text-sm hover:bg-[#234830] transition-all cursor-pointer active:scale-95"
                   >
-                    <span>Siguiente: Normativa GAD Tisaleo</span>
+                    <span>Siguiente: Retorno Financiero 25%</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </motion.div>
               </motion.div>
             )}
 
-            {/* SLIDE 3: NORMATIVA GAD TISALEO & BLINDAJE LEGAL */}
-            {activeSlide === 3 && (
+            {/* SLIDE 4 (Posición 5): NORMATIVA GAD TISALEO & BLINDAJE LEGAL */}
+            {activeSlide === 4 && (
               <motion.div 
                 variants={containerVariants}
                 initial="hidden"
@@ -546,27 +546,36 @@ export const PitchDeckView: React.FC<PitchDeckViewProps> = ({
                 </motion.div>
 
                 {/* Bottom Buttons */}
-                <motion.div variants={itemVariants} className="flex justify-between items-center pt-2 border-t border-[#cfe2d5]">
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#cfe2d5]">
                   <button
                     onClick={() => paginate(-1)}
                     className="text-sm font-bold text-[#446650] hover:text-[#183622] cursor-pointer"
                   >
-                    ← Volver a Prototipo de Villa
+                    ← Volver a Retorno Financiero
                   </button>
-                  <button
-                    onClick={() => paginate(1)}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#2d5a3c] text-white font-bold text-sm shadow-xs hover:bg-[#234830] transition-all cursor-pointer active:scale-95"
-                  >
-                    <span>Siguiente: Retorno Financiero 25%</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={onOpenDossierModal}
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#2d5a3c] hover:bg-[#234830] active:scale-95 text-white font-black text-sm shadow-xs transition-all cursor-pointer"
+                    >
+                      <FileText className="w-4 h-4 text-[#cbe4d3]" />
+                      <span>Ver Dossier Técnico Oficial Completo</span>
+                    </button>
+                    <button
+                      onClick={onOpenCostModal}
+                      className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-[#edf5fa] hover:bg-[#e0eff8] active:scale-95 text-[#1c486a] font-bold text-xs border border-[#c9dfec] transition-all cursor-pointer"
+                    >
+                      <span>Simulador de Ahorro</span>
+                    </button>
+                  </div>
                 </motion.div>
 
               </motion.div>
             )}
 
-            {/* SLIDE 4: RETORNO FINANCIERO 25% & CIERRE */}
-            {activeSlide === 4 && (
+            {/* SLIDE 3 (Posición 4): RETORNO FINANCIERO 25% */}
+            {activeSlide === 3 && (
               <motion.div 
                 variants={containerVariants}
                 initial="hidden"
@@ -770,22 +779,22 @@ export const PitchDeckView: React.FC<PitchDeckViewProps> = ({
                     onClick={() => paginate(-1)}
                     className="text-sm font-bold text-[#446650] hover:text-[#183622] cursor-pointer"
                   >
-                    ← Volver a Normativa GAD
+                    ← Volver a Prototipo de Villa
                   </button>
 
                   <div className="flex items-center gap-3">
-                    <button
-                      onClick={onOpenDossierModal}
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#2d5a3c] hover:bg-[#234830] active:scale-95 text-white font-black text-sm shadow-xs transition-all cursor-pointer"
-                    >
-                      <FileText className="w-4 h-4 text-[#cbe4d3]" />
-                      <span>Ver Dossier Técnico Oficial Completo</span>
-                    </button>
                     <button
                       onClick={onOpenCostModal}
                       className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl bg-[#edf5fa] hover:bg-[#e0eff8] active:scale-95 text-[#1c486a] font-bold text-xs border border-[#c9dfec] transition-all cursor-pointer"
                     >
                       <span>Simulador de Ahorro</span>
+                    </button>
+                    <button
+                      onClick={() => paginate(1)}
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-[#2d5a3c] text-white font-bold text-sm shadow-xs hover:bg-[#234830] transition-all cursor-pointer active:scale-95"
+                    >
+                      <span>Siguiente: Normativa GAD Tisaleo</span>
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>
