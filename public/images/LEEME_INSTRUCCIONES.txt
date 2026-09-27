@@ -1,0 +1,17 @@
+# Carpeta para Imágenes del Proyecto Vita Senior
+
+Coloca aquí tus dos imágenes con cualquiera de las extensiones estándar (.jpg, .png, .webp, .jpeg):
+
+1. IMAGEN 1 - RENDER DEL CONJUNTO:
+   Nombre de archivo recomendado:
+   - render.jpg
+   - render.png
+   - render.webp
+   (Esta imagen se mostrará automáticamente en el modelo y diseño completo del conjunto habitacional)
+
+2. IMAGEN 2 - MODELO DE LA VILLA:
+   Nombre de archivo recomendado:
+   - villa.jpg
+   - villa.png
+   - villa.webp
+   (Esta imagen se mostrará automáticamente en la sección del plano y modelo arquitectónico de la villa)

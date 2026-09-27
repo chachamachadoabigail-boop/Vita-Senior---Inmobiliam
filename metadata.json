@@ -1,0 +1,8 @@
+{
+  "name": "Remix Vita Senior - Pitch Inmobiliario de Triple Impacto",
+  "description": "Presentación ejecutiva y simulador interactivo del proyecto inmobiliario Vita Senior por Inmobi Liam en Tisaleo, Tungurahua.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
